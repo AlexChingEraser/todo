@@ -10,6 +10,10 @@ beforeEach(() => {
     return
 })
 
-test('add todo item item', () => {
-    expect(app.AddItem("go programming")).toEqual(listLength + 1)
+test('add todo item', () => {
+    expect(app.addItem("go programming")).toEqual(listLength + 1)
+})
+
+test('tag one item status into done', () => {
+    expect(app.completeItem(2)).toBeTruthy()
 })

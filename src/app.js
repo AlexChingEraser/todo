@@ -1,4 +1,4 @@
-let ToDoStorage = require("./storage.js")
+let todolists = require("./todolists.js")
 
 class TodoApp {
     constructor() {}
@@ -8,10 +8,21 @@ class TodoApp {
      * @param {String} item
      * @return {Number} index 
      */
-    AddItem(item) {
-        let itemIndex = ToDoStorage.storeItem(item)
+    addItem(item) {
+        let newItemIndex = todolists.addItem(item)
 
-        return itemIndex
+        return newItemIndex
+    }
+
+    /**
+     * tag done toward `itemIndex`
+     * @param {Mumber} itemIndex 
+     * @returns {Boolean} res
+     */
+    completeItem(itemIndex) {
+        let res = todolists.tagDone(itemIndex)
+
+        return res
     }
 }
 
