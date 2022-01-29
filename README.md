@@ -44,3 +44,12 @@ Total: 2 items
 Total: 3 items, 1 item done
 
 ```
+
+## Problem
+- data file should not upload
+- unit test: commander function test, file read/write **sync**, but not use astnc/promise/callback
+- TDD use
+- work flow: win -> git <- linux -> docker image <------ CI
+- Dockefile, git commands, shell script
+- 错误处理
+- 编号、标号

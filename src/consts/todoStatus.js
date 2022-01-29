@@ -1,8 +1,9 @@
 /**
  * todoStatus.js: the todo item status enum
  */
-
-exports.TodoStatus = {
-    INPROGESS: 'in progress',
+ TodoStatus = {
+    INPROGRESS: 'in progress',
     DONE: 'done'
 }
+
+module.exports = TodoStatus
