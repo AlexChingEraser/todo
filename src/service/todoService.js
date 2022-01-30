@@ -62,6 +62,24 @@ class TodoService {
     reset() {
         this.todo.resetItems()
     }
+
+    /**
+     * 导出待办项
+     * @param {String} exportfile 
+     */
+    export(exportfile) {
+        let res = this.todo.export(exportfile)
+        return res
+    }
+
+    /**
+     * 导入待办项
+     * @param {String} importfile 
+     */
+    import(importfile) {
+        let res = this.todo.import(importfile)
+        return res
+    }
 }
 
 module.exports = TodoService

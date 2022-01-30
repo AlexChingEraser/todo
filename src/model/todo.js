@@ -89,9 +89,27 @@ class Todo {
     equalToQueryCondition(queryItem, query) {
         for (let key of Object.keys(query)) {
             if (query[key] !== queryItem[key])
-            return false
+                return false
         }
         return true
+    }
+
+    /**
+     * 导出待办项
+     * @param {String} exportfile 
+     */
+    export(exportfile) {
+        let res = this.storageService.export(exportfile)
+        return res
+    }
+
+    /**
+     * 导入待办项
+     * @param {String} importfile 
+     */
+    import(importfile) {
+        let res = this.storageService.import(importfile)
+        return res
     }
 }
 

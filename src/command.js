@@ -83,10 +83,8 @@ Item ${index} added
 /**
  * done
  */
-commandService
-    .command('done')
+commandService.command('done').description('label a todo item status into `done`')
     .argument('<itemIndex>')
-    .description('label a todo item status into `done`')
     .action(function (itemIndex) {
         if (!app.isLogin()) { 
             console.log('you should login to use the todo app.'); 
@@ -103,11 +101,9 @@ commandService
 /**
  * list [-a, --all]
  */
-commandService
-    .command('list')
-    .description('only list the undoned todo item')
+commandService.command('list').description('only list the undoned todo item')
     .option('-a, --all', 'list all the todo items')
-    .action((option) => {
+    .action(function(option) {
         if (!app.isLogin()) { 
             console.log('you should login to use the todo app.'); 
             return; 
@@ -124,12 +120,49 @@ commandService
     })
 
 /**
+ * export
+ */
+commandService.command('export').description('export current todolist to specific destination')
+    .argument('<exportfile>')
+    .action(function(exportfile) {
+        if (!app.isLogin()) { 
+            console.log('you should login to use the todo app.'); 
+            return; 
+        }
+        let res = app.todoService.export(exportfile)
+        if (res) {//完成代办项
+            console.log(`Export to ${exportfile}`)
+        } else {
+            console.log(`Export failed`)
+        }
+    })
+
+/**
+ * import
+ */
+ commandService.command('import').description('import specific file to current todolist')
+ .option('-f --file', 'import file')
+ .argument('<importfile>')
+ .action(function(importfile) {
+     if (!app.isLogin()) { 
+         console.log('you should login to use the todo app.'); 
+         return; 
+     }
+     let res = app.todoService.import(importfile)
+     if (res) {//完成代办项
+         console.log(`Import ${importfile} successfully`)
+     } else {
+         console.log(`Import failed`)
+     }
+ })
+
+/**
  * reset
  */
 commandService
     .command('reset')
     .description('clear all the todo items')
-    .action(() => {
+    .action(function() {
         if (!app.isLogin()) { 
             console.log('you should login to use the todo app.'); 
             return; 

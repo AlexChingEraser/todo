@@ -2,7 +2,7 @@
 
 This is a to-do app practice from `GeekTime` cources written by `ZhengYe`.
 
-## Stage1
+## stage1 - Base
 ### add todo item
 
 ```javascript
@@ -49,7 +49,12 @@ Total: 3 items, 1 item done
 some rules: 
 - when user not login, todo can not use;
 - default: root/root, alex/alex
-- config file: ~/.todo-config
+- config file: ~/.todo-config. the `~/.todo-config` content like <username><passwd>:
+```shell
+root:root
+alex:alex
+cooper:cooper
+```
 ### login
 ```javascript
 todo login -u user
@@ -63,6 +68,17 @@ Login success!
 todo logout
 
 Louout success!
+```
+
+## stage3 - Export/Import
+### export todo lists
+```javascript
+todo export > <your/path/todolist.ext>
+```
+
+### import todo lists
+```javascript
+todo import -f <your/path/todolist.ext>
 ```
 
 ## Problem
