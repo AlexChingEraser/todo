@@ -1,9 +1,9 @@
-const TodoStatus = require('./consts/todoStatus.js')
-const Todo = require('./model/todo.js')
+const TodoStatus = require('../consts/todoStatus.js')
+const Todo = require('../model/todo.js')
 
 class TodoService {
-    constructor() {
-        this.todo = new Todo()
+    constructor(stroageService) {
+        this.todo = new Todo(stroageService)
     }
 
     /**

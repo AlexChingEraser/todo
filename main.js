@@ -2,6 +2,6 @@
  * main.js: main entry
  */
 
-const app = require('./src/commander.js')
+const commander = require('./src/command.js')
 
-app.parse(process.argv);
+commander.parse(process.argv);

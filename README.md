@@ -45,11 +45,31 @@ Total: 3 items, 1 item done
 
 ```
 
+## stage2 - Multi-Users
+some rules: 
+- when user not login, todo can not use;
+- default: root/root, alex/alex
+- config file: ~/.todo-config
+### login
+```javascript
+todo login -u user
+Password: 
+
+Login success!
+```
+
+### logout
+```javascript
+todo logout
+
+Louout success!
+```
+
 ## Problem
 - data file should not upload
 - unit test: commander function test, file read/write **sync**, but not use astnc/promise/callback
 - TDD use
 - work flow: win -> git <- linux -> docker image <------ CI
 - Dockefile, git commands, shell script
-- 错误处理
-- 编号、标号
+- handle error
+- node path route: chaos

@@ -1,14 +1,13 @@
 /**
  * todo
  */
-const Storage = require("../storage.js")
 const TodoItem = require('./todoItem.js')
 const TodoStatus = require('../consts/todoStatus.js')
 
 
 class Todo {
-    constructor() {
-        this.storage = new Storage()
+    constructor(storageService) {
+        this.storageService = storageService
     }
 
     /**
@@ -16,7 +15,7 @@ class Todo {
      * @returns res
      */
     queryLastIndex() {
-        return this.storage.queryLastIndex()
+        return this.storageService.queryLastIndex()
     }
 
     /**
@@ -42,7 +41,7 @@ class Todo {
      */
     queryItems(query) {
         let res = []
-        let todolists = this.storage.query() //[ '1:python:in progress', '2:java:done', '3:javascript:done' ]
+        let todolists = this.storageService.query() //[ '1:python:in progress', '2:java:done', '3:javascript:done' ]
         for (let item of todolists) {
             let [id, subject, status] = item.split(':')
             let queryItem = new TodoItem(id, subject, status)
@@ -59,7 +58,7 @@ class Todo {
      * @returns {Number} index
      */
     appendItem(subject) {
-        let res = this.storage.appendItem(subject)
+        let res = this.storageService.appendItem(subject)
         return res
     }
 
@@ -69,7 +68,7 @@ class Todo {
      * @returns {Number} res
      */
     changeItemStatus(index) {
-        let res = this.storage.updateItem(index)
+        let res = this.storageService.updateItem(index)
         return res
     }
 
@@ -77,7 +76,7 @@ class Todo {
      * 重置待办项
      */
     resetItems() {
-        this.storage.clearAll()
+        this.storageService.clearAll()
     }
 
     /**
